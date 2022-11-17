@@ -1,6 +1,6 @@
 /*
   Užduotis reikia atlikti 2 kartus
-    * su while ciklu
+    * su while ciklu 
     * su for ciklu
 */
 
