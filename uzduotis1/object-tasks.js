@@ -35,7 +35,33 @@ console.groupEnd();
 
 console.groupCollapsed('3 - https://edabit.com/challenge/48EJWLhF224na8po3');
 {
+  function generation(x, y) {
+    const title = {
+      "-3": 'great grand',
+      "-2": 'grand',
+      "-1": '',
+      "0": 'me!',
+      "1": '',
+      "2": 'grand',
+      "3": 'great grand',
+    };
+    ats = title[x];
+    if ((y === 'm') && (x > 0)) {
+      return ats += 'son';
+    }
+    else if ((y === 'm') && (x < 0)) {
+      return ats += 'father';
+    }
 
+    if ((y === 'f') && (x > 0)) {
+      return ats += 'daughter';
+    }
+    else if ((y === 'f') && (x < 0)){
+      return ats += 'mother';
+    }
+    return ats;
+  }
+  console.log(generation(-3, 'f'));
 }
 console.groupEnd();
 
