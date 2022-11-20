@@ -15,10 +15,15 @@ console.groupCollapsed('2. Parašykite funkciją, kuri pašalina pirmą masyvo e
   manoMasyvas = ['a','b','c','d','e','f','g','h','i'];
 
   function pasalinkPirma (masyvas) {
-    return masyvas.shift();
+    console.log("Pasalintas elementas: " + masyvas[0]);
+    for (let i = 0; i < masyvas.length-1; i += 1) {
+      masyvas[i] = masyvas[i+1];
+    }
+    masyvas.length = masyvas.length - 1;
+    return masyvas;
   }
 
-  console.log(pasalinkPirma(manoMasyvas));
+  pasalinkPirma(manoMasyvas);
   console.log("Likes masyvas: " + manoMasyvas);
 }
 console.groupEnd();
@@ -41,7 +46,7 @@ console.groupCollapsed('4. Parašykite funkciją, kuri pašalina paskutinį masy
 
   function pasalinkPaskutini (masyvas) {
     elementas = masyvas[masyvas.length-1];
-    console.log(elementas);
+    console.log("Pasalintas elementas: " + elementas);
 
     return masyvas.length = masyvas.length-1;
   }
@@ -203,10 +208,11 @@ console.groupCollapsed('13. Parašykite funkciją, kuri atspausdina kiekvieno ma
     for (let i = 0; i < masyvas.length; i += 1)
     {
       eilute = eilute + "[" + i + "]=>" + masyvas[i];
+      if (i < masyvas.length-1) {
+        eilute += " ";
+      }
     }
-    if (i < masyvas.length-1) {
-      eilute += " ";
-    }
+    
     console.log(eilute);
   }
 
