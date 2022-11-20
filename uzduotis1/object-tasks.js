@@ -127,7 +127,22 @@ console.groupEnd();
 
 console.groupCollapsed('6 - https://edabit.com/challenge/pPNAs5PvB3WvnDwDM');
 {
-
+  function toArray(obj) {
+    const result = [];
+    let i = 0;
+    for (const key in obj) {
+      result[i] = [key, obj[key]];
+      i += 1;
+    }
+  
+    return result;
+  }
+  
+  const arr1 = toArray({ a: 1, b: 2, c: 6 });
+  const arr2 = toArray({ shrimp: 15, tots: 122});
+  
+  console.log(arr1);
+  console.log(arr2);
 }
 console.groupEnd();
 
