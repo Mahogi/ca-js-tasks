@@ -1,6 +1,6 @@
 // ----------------------Užduotys--------------------------
 const numbers = [1, 2, -2, 6, -5, 9, 1.02, 45, -69, 77, -12, 2, 8, -2, -4, 59, 7, -3];
-const numbers2 = [1, 2.5, -2, 6, -5, 9, 1.02, 45, -69.77, 77, -12, 2.15, 8, -2, -4.0023, 59, 7, -3];
+const numbers2 = [1.7, 2.5, -2, 6, -5.02, 9, 1.02, 45, -69.77, 77, -12.12, 2.15, 8, -2, -4.0023, 59, 7.77, -3];
 
 console.group('1. Padauginti masyvo narius iš 2 ir išsaugoti naujame masyve');
 console.log('---');
@@ -67,10 +67,12 @@ console.log('---');
 {
   function filterPositives(arr) {
     const result = [];
+    let extraSkaitliukas = 0;
 
     for (let i = 0; i < arr.length; i += 1) {
       if (arr[i] >= 0) {
-        result.push(arr[i]);
+        result[extraSkaitliukas] = arr[i];
+        extraSkaitliukas += 1;
       }
     }
     return result;
@@ -89,10 +91,12 @@ console.log('---');
 {
   function filterNegatives(arr) {
     const result = [];
+    let extraSkaitliukas = 0;
 
     for (let i = 0; i < arr.length; i += 1) {
         if (arr[i] < 0) {
-          result.push(arr[i]);
+          result[extraSkaitliukas] = arr[i];
+          extraSkaitliukas += 1;
         }
     }
     return result;
@@ -111,10 +115,12 @@ console.log('---');
 {
   function filterEquals(arr) {
     const result = [];
+    let extraSkaitliukas = 0;
 
     for (let i = 0; i < arr.length; i += 1) {
       if (arr[i] % 2 === 0) {
-        result.push(arr[i]);
+        result[extraSkaitliukas] = arr[i];
+        extraSkaitliukas += 1;
       }
     }
     return result;
@@ -133,11 +139,13 @@ console.log('---');
 {
   function filterOdds(arr) {
     const result = [];
+    let extraSkaitliukas = 0;
 
     for (let i = 0; i < arr.length; i += 1) {
       if ((arr[i] % 2 === 1) || (arr[i] % 2 === -1)) {
         //skaiciai po kablelio yra nei lyginiai nei nelyginiai, tad jie atmetami
-        result.push(arr[i]);
+        result[extraSkaitliukas] = arr[i];
+        extraSkaitliukas += 1;
       }
     }
     return result;
@@ -194,9 +202,8 @@ console.log('---');
           j += 1;
         }
       }
-
-      // result[i] = arr[i] * -1;
     }
+
     return result;
   }
   console.log({
@@ -213,11 +220,13 @@ console.log('---');
 {
   function filterNaturals(arr) {
     const result = [];
+    let extraSkaitliukas = 0;
 
     for (let i = 0; i < arr.length; i += 1) {
       // Jei neneigiamas skaicius dalijasi is 2 su nulio liekana, arba 0.5 reiskia jis naturalus
       if ((arr[i] > 0) && ((arr[i] % 2 === 1) || (arr[i] % 2 === 0))){
-        result.push(arr[i]);
+        result[extraSkaitliukas] = arr[i];
+        extraSkaitliukas += 1;
       }
     }
     return result;
@@ -238,30 +247,22 @@ console.log('---');
     const result = [];
 
     for (let i = 0; i < arr.length; i += 1) {
-      if (arr[i] % 1 === 0) {
-        result[i] =  arr[i];
-      } else {
-        // I am sorry in advance
-        let likutis = arr[i];
-        if (likutis > 0) {
-          while ((likutis-1) > 0) {
-            likutis -= 1;
-          }
-        } else {
-          while ((likutis+1) < 0) {
-            likutis += 1;
-          }
-        }
-
-        result[i] = arr[i] - likutis; 
-      }
+        let remainder = arr[i] % 1;
+        let whole = arr[i] - remainder;
       
+        if (remainder <= -0.5) {
+          result[i] = whole - 1;
+        } else if (remainder >= 0.5) {
+          result[i] = whole + 1;
+        } else {
+          result[i] = whole;
+        }
     }
     return result;
   }
   console.log({
-    numbers2,
-    result: absArrElements(numbers2)
+    numbers,
+    result: absArrElements(numbers)
   });
 }
 console.log('---');
@@ -272,9 +273,11 @@ console.log('---');
 {
   function filterEverySecond(arr) {
     const result = [];
+    let extraSkaitliukas = 0;
 
     for (let i = 0; i < arr.length; i += 2) {
-        result.push(arr[i]);
+      result[extraSkaitliukas] = arr[i];
+      extraSkaitliukas += 1;
       }
     return result;
     }
@@ -292,9 +295,11 @@ console.log('---');
 {
   function filterEveryFifth(arr) {
     const result = [];
+    let extraSkaitliukas = 0;
 
     for (let i = 0; i < arr.length; i += 5) {
-        result.push(arr[i]);
+      result[extraSkaitliukas] = arr[i];
+      extraSkaitliukas += 1;
       }
     return result;
   }
@@ -398,4 +403,4 @@ console.log('---');
   });
 }
 console.log('---');
-console.groupEnd();
+console.groupEnd()
