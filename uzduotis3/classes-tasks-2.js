@@ -126,22 +126,46 @@ console.groupEnd();
 console.groupCollapsed('5. - https://edabit.com/challenge/Hgb38yhWGwJCMHbRQ');
 {
   class Circle {
-    radius;
+    #radius;
 
     constructor(radius) {
       this.radius = radius;
     }
 
+    set radius (value) {
+      if (isNaN(value)) {
+        console.error(`Klaida: radius privalo būti skaičius.\n\tGauta: ${value}`);
+        return;
+      }
+      this.#radius = value;
+    }
+
+    get radius() {
+      return this.#radius;
+    }
+
     getArea() {
+      if (isNaN(this.#radius)) {
+        console.error(`Klaida: radius nebuvo skaičius, tad negalima apskaičiuoti ploto.`);
+        return;
+      }
       return Math.PI * this.radius * this.radius;
     }
 
     getPerimeter() {
+      if (isNaN(this.#radius)) {
+        console.error(`Klaida: radius nebuvo skaičius, tad negalima apskaičiuoti perimetro.`);
+        return;
+      }
       return 2 * Math.PI * this.radius;
     }
   }
   
-  let q = new Circle(4.44);
+  let q = new Circle('labas');
+  q.getArea();
+
+  q.radius = 4.44;
+  console.log(q.radius);
   console.log(q.getArea()); // 61.93210093580775
   console.log(q.getPerimeter()); // 27.897342763877365
   console.log(Math.PI); // 3.141592653589793
@@ -174,19 +198,44 @@ console.groupEnd();
 console.groupCollapsed('7. - https://edabit.com/challenge/HKmJFmZZCX53ff4ke');
 {
   class IceCream {
-    flavor;
-    numSprinkles;
+    #flavor;
+    #numSprinkles;
 
     constructor(flavor, numSprinkles) {
       this.flavor = flavor;
       this.numSprinkles = numSprinkles;
     }
+
+    set flavor (value) {
+      if (typeof value != 'string') {
+        console.error(`Klaida: ledų skonis nėra 'string' .\n\tGauta: ${value}, įvestos reikšmės tipas - ${typeof(value)}`);
+        return;
+      }
+      this.#flavor = value;
+    }
+
+    get flavor () {
+      return this.#flavor;
+    }
+
+    set numSprinkles (value) {
+      if (isNaN(value)) {
+        console.error(`Klaida: pabarstukų kiekis privalo būti skaičius.\n\tGauta: ${value}, įvestos reikšmės tipas - ${typeof(value)}`);
+        return;
+      }
+      this.#numSprinkles = value;
+    }
+
+    get numSprinkles () {
+      return this.#numSprinkles;
+    }
   }
+
 
   function sweetestIcecream(arr) {
     let sweetestOfAll = 0;
     for (i in arr) {
-      let sweetness;
+      let sweetness = 0;
 
       if (arr[i].flavor === "Plain") {
         sweetness = 0 + arr[i].numSprinkles;
@@ -220,6 +269,9 @@ console.groupCollapsed('7. - https://edabit.com/challenge/HKmJFmZZCX53ff4ke');
   sweetestIcecream([ice3, ice1]); // ➞ 23
 
   sweetestIcecream([ice3, ice5]); // ➞ 17
+
+  console.log("\n Testuojam blogai sukurtą ledą:")
+  ice11 = new IceCream(13, "labas");
 }
 console.groupEnd();
 
