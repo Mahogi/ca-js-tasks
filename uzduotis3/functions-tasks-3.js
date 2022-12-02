@@ -198,31 +198,17 @@ console.log();
 
 console.group("20. Sukurkite funkciją, kuri grąžina indeksų masyvą su visais vartotojo įvestos raidės pasikartojimais žodyje");
 {
+  function indexesOfLetter(str, letter) {
+    const aIndexArray = [];
+    let indexOfA = str.indexOf(letter);
 
-  const letterEVariations = 'eęė';
-  const letterAVariations = 'aą';
-  const letterIVariations = 'iį';
-  const letterUVariations = 'uūų';
+    while (true) {
+      if (indexOfA < 0) break;
+      aIndexArray.push(str.indexOf(letter, indexOfA))
+      indexOfA = str.indexOf(letter, indexOfA+1); // 0
+    }
 
-  const additionalLTChecks = {
-    a: letterAVariations,
-    ą: letterAVariations,
-    i: letterIVariations,
-    į: letterIVariations,
-    e: letterEVariations,
-    ę: letterEVariations,
-    ė: letterEVariations,
-    u: letterUVariations,
-    ų: letterUVariations,
-    ū: letterUVariations
-  }
-
-  function indexesOfLetter(str, searchLetter) {
-    const search = additionalLTChecks[searchLetter] ?? searchLetter;
-    const letterRegex = new RegExp(search);
-    const foundResults = str.search(letterRegex);
-    console.log(foundResults);
-    // code ...
+    return aIndexArray;
   }
   console.log('---');
   console.log({
