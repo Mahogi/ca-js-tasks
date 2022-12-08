@@ -246,10 +246,10 @@ console.groupEnd();
 console.groupCollapsed('8. Iš students masyvo atrinkti ir atspausdinti visų studentų vidurkius');
 
 function calculateAverage ({name, modules}) {
-  let creditTotal = modules.reduce( (prevSum, {credits}) => prevSum += credits, 0);
+  let creditTotal = modules.reduce( (prevSum, {credits}) => prevSum + credits, 0);
   let totalMarksSum = 0;
   for (let i = 0; i < modules.length; i+= 1){
-    let totalSingeCourseMarkSum = modules[i].marks.reduce((prevSum, mark) => prevSum += mark) * modules[i].credits;
+    let totalSingeCourseMarkSum = modules[i].marks.reduce((prevSum, mark) => prevSum + mark) * modules[i].credits;
     totalMarksSum += totalSingeCourseMarkSum / modules[i].marks.length;
   }
 
