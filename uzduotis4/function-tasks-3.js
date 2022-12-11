@@ -43,7 +43,16 @@ console.log();
 console.group("23. Sukurkite funkciją, kuri ištrintų visus 'a' raidės pasikartojimus žodyje");
 {
   function removeAllOccurencesOfLetterA(str) {
-    return str.replaceAll("a", "");
+    //perdaryta su akmenim ir pagaliais
+    let editedString = "";
+    for (let i = 0; i < str.length; i += 1){
+      if (str[i] !== "a") {
+        editedString += str[i];
+      }
+    }
+    return editedString;
+
+    //return str.replaceAll("a", "");
   }
   console.log('---');
   console.log({
@@ -59,7 +68,16 @@ console.log();
 console.group("24. Sukurkite funkciją, kuri ištrintų visus, vartotojo įvestos raidės pasikartojimus žodyje");
 {
   function removeAllOccurencesOfLetter(str, letter) {
-    return str.replaceAll(letter, "");
+    //perdaryta su akmenim ir pagaliais
+    let editedString = "";
+    for (let i = 0; i < str.length; i += 1){
+      if (str[i] !== letter) {
+        editedString += str[i];
+      }
+    }
+    return editedString;
+
+   // return str.replaceAll(letter, "");
   }
   console.log('---');
   console.log({
@@ -94,7 +112,18 @@ console.log();
 console.group("26. Sukurkite funkciją, kuri pirmu parametrų priimą sakinį, kiekvieną tarpą pakeičia brūkšneliu ir grąžina pakeistą sakinį");
 {
   function replaceSpaceWithDash(str) {
-    return str.replaceAll(" ", "-");
+    //perdaryta su akmenim ir pagaliais
+    let editedString = "";
+    for (let i = 0; i < str.length; i += 1){
+      if (str[i] !== " ") {
+        editedString += str[i];
+      } else {
+        editedString += "-"
+      }
+    }
+    return editedString;
+
+    //return str.replaceAll(" ", "-");
   }
   console.log('---');
   console.log({
